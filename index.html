@@ -3,48 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barangay Alijis | Official Community App</title>
+    <title>Barangay Alijis | Community Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         :root {
-            --primary: #2e7d32;
-            --secondary: #1b5e20;
-            --accent: #FF5252;
-            --bg: #f5f5f5;
-            --text: #333;
+            --primary: #2e7d32; /* Barangay Green */
+            --primary-dark: #1b5e20;
+            --accent: #ffc107;
+            --text-main: #1a1a1a;
+            --text-muted: #666;
+            --bg-light: #f9fbf9;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
-        * { margin: 0; padding: 0; box-box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-
-        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: var(--text-main); line-height: 1.6; }
 
         /* Navigation */
-        nav { padding: 20px 10px; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+        nav { padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; background: transparent; position: absolute; width: 100%; z-index: 10; }
+        .logo { font-weight: 800; font-size: 1.4rem; color: var(--primary); letter-spacing: -0.5px; }
 
         /* Hero Section */
-        .hero { padding: 100px 20px; text-align: center; background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1518173946687-a4c8a9ba332f?q=80&w=2574&auto=format&fit=crop'); background-size: cover; }
-        .hero h1 { font-size: 3rem; margin-bottom: 20px; color: var(--secondary); }
-        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; color: #666; }
+        .hero { padding: 160px 5% 100px; text-align: center; background: radial-gradient(circle at top right, #e8f5e9, transparent); }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; color: var(--primary-dark); }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; }
 
-        .btn-group { display: flex; justify-content: center; gap: 20px; }
-        .btn { padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .btn-primary { background-color: var(--primary); color: white; border: 2px solid var(--primary); }
-        .btn-primary:hover { background-color: var(--secondary); border-color: var(--secondary); transform: translateY(-3px); }
-        .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
-        .btn-outline:hover { background-color: var(--primary); color: white; }
+        /* Buttons */
+        .btn-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .btn { padding: 16px 32px; border-radius: 12px; font-weight: 600; text-decoration: none; transition: all 0.2s ease; font-size: 1rem; }
+        .btn-primary { background: var(--primary); color: var(--white); box-shadow: 0 4px 14px rgba(46, 125, 50, 0.3); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        .btn-outline { background: var(--white); color: var(--primary); border: 2px solid var(--primary); }
+        .btn-outline:hover { background: #f1f8f1; transform: translateY(-2px); }
 
-        /* Features Section */
-        .features { padding: 80px 20px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, min-minmax(300px, 1fr)); gap: 30px; }
-        .feature-card { background: white; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .feature-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
-        .feature-card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+        /* App Showcase */
+        .showcase { padding: 40px 5%; text-align: center; }
+        .mockup-container { 
+            position: relative; 
+            max-width: 320px; 
+            margin: 0 auto; 
+            background: #000; 
+            padding: 12px; 
+            border-radius: 45px; 
+            box-shadow: var(--shadow); 
+            border: 4px solid #333;
+        }
+        .mockup-img { width: 100%; border-radius: 35px; display: block; }
 
-        /* Mockup Section */
-        .mockup { text-align: center; padding-bottom: 80px; }
-        .mockup-img { max-width: 300px; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
+        /* Features */
+        .features { padding: 100px 5%; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .feature-card { background: var(--white); padding: 40px; border-radius: 24px; transition: transform 0.3s ease; border: 1px solid #edf2ed; }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
+        .feature-card i { font-size: 2rem; color: var(--primary); margin-bottom: 20px; display: block; }
+        .feature-card h3 { font-size: 1.4rem; margin-bottom: 12px; font-weight: 700; }
+        .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
 
-        footer { padding: 40px; text-align: center; color: #999; font-size: 0.9rem; }
+        footer { padding: 60px 5%; text-align: center; border-top: 1px solid #eee; background: var(--white); color: var(--text-muted); }
+        
+        @media (max-width: 768px) {
+            .hero { padding-top: 120px; }
+            .btn { width: 100%; max-width: 300px; text-align: center; }
+        }
     </style>
 </head>
 <body>
@@ -54,40 +76,43 @@
     </nav>
 
     <header class="hero">
-        <h1>Your Barangay, Just a Tap Away.</h1>
-        <p>Access emergency services, report community issues, and manage appointments for Barangay Alijis residents instantly.</p>
+        <h1>Smarter Living for <br><span style="color:var(--primary)">Barangay Alijis</span></h1>
+        <p>The all-in-one community portal for emergency reports, digital appointments, and real-time updates.</p>
+        
         <div class="btn-group">
             <a href="https://snack.expo.dev/@lance_libuna/itpe22_libuna_sabordo_sambajon" class="btn btn-primary" target="_blank">
-                <i class="fas fa-play"></i> Try Now
+                <i class="fas fa-rocket"></i> Try Now on Snack
             </a>
-            <a href="#features" class="btn btn-outline">Learn More</a>
+            <a href="#features" class="btn btn-outline">Explore Features</a>
         </div>
     </header>
 
-    <section class="mockup">
-        <img src="https://via.placeholder.com/300x600/2e7d32/ffffff?text=Barangay+App+UI" alt="App Mockup" class="mockup-img">
+    <section class="showcase">
+        <div class="mockup-container">
+            <img src="https://via.placeholder.com/300x600/2e7d32/ffffff?text=Barangay+App+UI" alt="App UI" class="mockup-img">
+        </div>
     </section>
 
     <section id="features" class="features">
         <div class="feature-card">
-            <i class="fas fa-truck-medical"></i>
-            <h3>One-Touch SOS</h3>
-            <p>Send your GPS coordinates to barangay responders immediately during emergencies.</p>
+            <i class="fas fa-shield-heart"></i>
+            <h3>Instant SOS</h3>
+            <p>Direct emergency signal transmission to barangay responders with real-time GPS coordinates.</p>
         </div>
         <div class="feature-card">
-            <i class="fas fa-bullhorn"></i>
-            <h3>Digital Reporting</h3>
-            <p>Snap a photo of road damage or waste issues and report them directly to the council.</p>
+            <i class="fas fa-file-signature"></i>
+            <h3>Digital Clearance</h3>
+            <p>Request barangay certificates and clearances online. No more waiting in long physical lines.</p>
         </div>
         <div class="feature-card">
-            <i class="fas fa-calendar-check"></i>
-            <h3>Easy Appointments</h3>
-            <p>Skip the line. Book your barangay clearance or certificates through the app.</p>
+            <i class="fas fa-camera-retro"></i>
+            <h3>Citizen Reports</h3>
+            <p>Report waste, road issues, or safety concerns with photo uploads and status tracking.</p>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Barangay Alijis Official. Developed for ITPE22.</p>
+        <p>&copy; 2026 Barangay Alijis Official App • Built for the Community</p>
     </footer>
 
 </body>
